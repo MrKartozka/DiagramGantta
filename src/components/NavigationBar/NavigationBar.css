@@ -1,0 +1,63 @@
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #E8E8E8;
+    height: 80px;
+    padding: 0 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+
+.top-nav .logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.top-nav .user-profile {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.top-nav .user-profile img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    width: 150px;
+}
+
+.home-button {
+    color: #aaaa15;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.home-button:hover {
+    text-decoration: underline;
+}
+
+.home-button img {
+    height: 40px;
+}
+
+.logo {
+    height: 26px;
+}

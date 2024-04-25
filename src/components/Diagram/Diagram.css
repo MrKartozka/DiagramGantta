@@ -126,32 +126,12 @@ smart-gantt-chart .release-team {
   background: blue;
 }
 
-.side-nav--items {
-  background-color: #d3d3d3;
-  width: 100%;
-  min-height: 50dvh;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
-  border-radius: 35px;
-  gap: 50px;
-  margin: 50px 0 20px 0;
-  padding: 50px 0;
-}
 
-.side-nav--items img {
-  width: 45px;
-  cursor: pointer;
-}
-
-.referal-icons {
-  margin-bottom: 50px;
-}
 
 .diagramm-home-screen {
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: 100vw;
+  margin-top: 200px;
 }

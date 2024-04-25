@@ -1,0 +1,28 @@
+.status-section {
+    position: absolute;
+    right: 350px;
+    margin-top: 150px;
+}
+
+.status-section h2 {
+    margin-left: 250px;
+    font-size: 50px;
+    font-family: sans-serif;
+}
+
+
+.status {
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.status-item {
+    margin-bottom: 25px;
+}
+
+.status span {
+    margin-left: 80px;
+    font-size: 30px;
+    position: absolute;
+    margin-top: 25px;
+}

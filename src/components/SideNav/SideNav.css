@@ -1,0 +1,48 @@
+.side-nav {
+    position: fixed;
+    top: 80px;
+    right: 0;
+    height: calc(100vh - 80px);
+    width: 80px;
+    background-color: #ECEBEB;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    z-index: 999;
+    border-style: solid;
+    border-color: #E2E1E1;
+    overflow-y: auto;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.side-nav img {
+    width: 38px;
+}
+
+.side-nav--items {
+    background-color: #d3d3d3;
+    width: 100%;
+    min-height: 30dvh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    border-radius: 35px;
+    gap: 50px;
+    margin: 50px 0 20px 0;
+    padding: 30px 0;
+}
+
+.side-nav--items img {
+    width: 45px;
+    cursor: pointer;
+}
+
+.referal-icons {
+    margin-bottom: 50px;
+    justify-self: end;
+    bottom: 0;
+    position: absolute;
+}

@@ -4,6 +4,8 @@ import "smart-webcomponents-react/source/styles/smart.default.css";
 import "./Diagram.css";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import TableDiagram from "../TableDiagram/TableDiagram";
+import NavigationBar from "../NavigationBar/NavigationBar";
+import SideNav from "../SideNav/SideNav";
 
 function Diagram() {
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -293,85 +295,9 @@ function Diagram() {
 
 	return (
 		<div className="diagramm-home-screen">
-			<div className="top-nav">
-				<div className="user-profile" onClick={handleAvatarClick}>
-					<img src="profile.png" alt="User Profile" />
-					<span>John Doe</span>
-					{isDropdownOpen && (
-						<div className="dropdown-menu">
-							<ul>
-								<li>
-									<a href="#">Change User</a>
-								</li>
-								<li>
-									<a href="#">About Me</a>
-								</li>
-								<li>
-									<a href="#">Settings</a>
-								</li>
-							</ul>
-						</div>
-					)}
-				</div>
-				<Link to="/">
-					<button className="home-button">
-						<img src="/home.png" alt="settings" />
-					</button>
-				</Link>
-				<img
-					className="logo"
-					src="masiot-logo.png"
-					alt="Company Logo"
-				/>
-			</div>
-			<div className="side-nav">
-				<img
-					src="notifications-small.png"
-					className="notifications-icons"
-					alt="notif-icon"
-				/>
-				<img
-					src="mail-small.png"
-					className="mail-icons"
-					alt="mail-icon"
-				/>
-				<div className="side-nav--items">
-					<div className="side-nav__item">
-						<img
-							src="/sideInfo.svg"
-							className="side-nav--items__info"
-							alt=""
-						/>
-					</div>
-					<div className="side-nav__item">
-						<img
-							src="/sideFilters.svg"
-							className="side-nav--items__filters"
-							alt=""
-						/>
-					</div>
-					<div className="side-nav__item">
-						<img
-							src="/sideRefresh.svg"
-							className="side-nav--items__refresh"
-							alt=""
-						/>
-					</div>
-					<div className="side-nav__item">
-						<img
-							src="/sideSign.svg"
-							className="side-nav--items__sign"
-							alt=""
-						/>
-					</div>
-				</div>
-				<img
-					src="referal-small.png"
-					className="referal-icons"
-					alt="referal-icon"
-				/>
-			</div>
-			<div className="header-items">
+			<NavigationBar />
+			<SideNav />
+			{/* <div className="header-items">
 				<div className="links">
 					<div className="links-texts">
 						<div
@@ -400,7 +326,7 @@ function Diagram() {
 					onChange={(e) => setSearchTerm(e.target.value)}
 					className="search-input"
 				/>
-			</div>
+			</div> */}
 
 			{selectedChart === "gantta" && (
 				<GanttChart
