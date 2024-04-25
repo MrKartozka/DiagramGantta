@@ -24,7 +24,7 @@ button {
   grid-gap: 10px;
   margin-top: 20px;
   margin-left: 20px;
-  
+
 }
 
 .status-section {
@@ -86,12 +86,11 @@ button {
   z-index: 999;
 }
 
-/* vertical navigation on the right */
 .side-nav {
   position: fixed;
-  top: 80px; /* offset top with the height of the top nav */
+  top: 80px;
   right: 0;
-  height: calc(100vh - 80px); /* subtract height of top nav from total height */
+  height: calc(100vh - 80px);
   width: 80px;
   background-color: #ECEBEB;
   display: flex;
@@ -101,6 +100,7 @@ button {
   z-index: 999;
   border-style: solid;
   border-color: #E2E1E1;
+  overflow-y: auto;
 }
 
 .side-nav img {
@@ -109,11 +109,6 @@ button {
 
 .mail-icons {
   margin-top: 20px;
-}
-
-.referal-icons {
-  top: 750px;
-  position: relative;
 }
 
 .home-button {
@@ -142,8 +137,8 @@ button {
 .top-nav .user-profile {
   display: flex;
   align-items: center;
-  cursor: pointer; /* add cursor pointer for hover effect */
-  position: relative; /* add position relative for dropdown positioning */
+  cursor: pointer;
+  position: relative;
 }
 
 .top-nav .user-profile img {
@@ -151,7 +146,6 @@ button {
   margin-right: 10px;
 }
 
-/* Dropdown menu styling */
 .dropdown-menu {
   position: absolute;
   top: 45px;
@@ -216,7 +210,7 @@ button {
   color: #027CC0;
 }
 
-.resource-button  {
+.resource-button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -241,7 +235,7 @@ button {
   padding-top: 10px;
 }
 
-.nomenclature-button  {
+.nomenclature-button {
   background-color: #D9D9D9;
 }
 
@@ -249,11 +243,11 @@ button {
   background-color: #B5B2B2;
 }
 
-.nomenclature-button span  {
+.nomenclature-button span {
   color: #027CC0;
 }
 
-.report-button  {
+.report-button {
   background-color: #2F9BD8;
 }
 
@@ -261,7 +255,7 @@ button {
   background-color: #2887BC;
 }
 
-.mail-button  {
+.mail-button {
   background-color: #D9D9D9;
 }
 
@@ -269,12 +263,12 @@ button {
   background-color: #B5B2B2;
 }
 
-.mail-button span  {
+.mail-button span {
   color: #027CC0;
   text-align: center;
 }
 
-.journal-button  {
+.journal-button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -294,7 +288,7 @@ button {
   background-color: #2887BC;
 }
 
-.notification-button  {
+.notification-button {
   background-color: #D9D9D9;
 }
 
@@ -302,7 +296,7 @@ button {
   background-color: #B5B2B2;
 }
 
-.notification-button span  {
+.notification-button span {
   color: #027CC0;
 }
 
@@ -318,12 +312,21 @@ button {
 .search-container {
   padding-right: 60px;
 }
+
 .timeline {
   margin-top: 10px;
   margin-left: 50px;
   background-color: #51BEFC;
 }
 
-.red { background-color: red; }
-.green { background-color: green; }
-.blue { background-color: blue; }
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
