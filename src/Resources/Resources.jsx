@@ -6,17 +6,21 @@ import "../Resources/Resources.css";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 
 function Resources() {
+	// Состояние для управления раскрывающимся меню
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+	// Обработчик клика по аватарке для открытия/закрытия раскрывающегося меню
 	const handleAvatarClick = () => {
 		setIsDropdownOpen(!isDropdownOpen);
 	};
 
+	// Создаем ссылку для Gantt диаграммы
 	const ganttChart = useRef();
-	const view = "day";
-	const treeSize = "25%";
-	const durationUnit = "hour";
+	const view = "day"; // Устанавливаем вид диаграммы
+	const treeSize = "25%"; // Устанавливаем размер дерева задач
+	const durationUnit = "hour"; // Устанавливаем единицу длительности
 
+	// Функция для форматирования даты
 	function formatDate(dateStr) {
 		if (typeof dateStr === "string") {
 			return dateStr.replace(" ", "T");
@@ -24,6 +28,7 @@ function Resources() {
 		return dateStr;
 	}
 
+	// Функция для получения диапазона дат задачи
 	function getTaskSpan(segments) {
 		if (segments && segments.length > 0) {
 			const dates = segments.map((segment) => ({
@@ -31,13 +36,13 @@ function Resources() {
 				end: new Date(formatDate(segment.dateEnd)),
 			}));
 
-			dates.sort((a, b) => a.start - b.start);
+			dates.sort((a, b) => a.start - b.start); // Сортируем даты по началу
 
-			const dateStart = dates[0].start;
+			const dateStart = dates[0].start; // Получаем самую раннюю дату начала
 
-			dates.sort((a, b) => b.end - a.end);
+			dates.sort((a, b) => b.end - a.end); // Сортируем даты по окончанию
 
-			const dateEnd = dates[0].end;
+			const dateEnd = dates[0].end; // Получаем самую позднюю дату окончания
 
 			return {
 				dateStart: dateStart.toISOString(),
@@ -51,6 +56,7 @@ function Resources() {
 		}
 	}
 
+	// Инициализация данных для диаграммы
 	const initialDataSource = [
 		{
 			id: "Слесарь",
@@ -134,10 +140,12 @@ function Resources() {
 	});
 	const [dataSource, setDataSource] = useState([]);
 
+	// Эффект для установки начальных данных при монтировании компонента
 	useEffect(() => {
 		setDataSource(initialDataSource);
 	}, []);
 
+	// Возвращаем JSX для отображения компонента
 	return (
 		<div className="diagramm-home-screen">
 			<div className="top-nav">
@@ -189,68 +197,70 @@ function Resources() {
 				/>
 			</div>
 			<GanttChart
-				ref={ganttChart}
-				id="ganttChart"
-				view={view}
+				ref={ganttChart} // Ссылка на компонент GanttChart
+				id="ganttChart" // Устанавливаем id для компонента GanttChart
+				view={view} // Устанавливаем вид диаграммы
 				taskColumns={[
 					{
-						label: "Employee",
-						value: "id",
+						label: "Employee", // Устанавливаем метку столбца
+						value: "id", // Устанавливаем значение столбца
 					},
 					{
-						label: "Job Name",
-						value: "job",
-						hidden: "true",
+						label: "Job Name", // Устанавливаем метку столбца
+						value: "job", // Устанавливаем значение столбца
+						hidden: "true", // Скрываем столбец
 					},
 					{
-						label: "Цех",
-						value: "gild",
+						label: "Цех", // Устанавливаем метку столбца
+						value: "gild", // Устанавливаем значение столбца
 					},
 					{
-						label: "УИН",
-						value: "UIN",
+						label: "УИН", // Устанавливаем метку столбца
+						value: "UIN", // Устанавливаем значение столбца
 					},
 				]}
-				treeSize={treeSize}
-				durationUnit={durationUnit}
-				dataSource={dataSource}
-				popupWindowTabs={["general", "segments", "custom"]}
+				treeSize={treeSize} // Устанавливаем размер дерева задач
+				durationUnit={durationUnit} // Устанавливаем единицу длительности
+				dataSource={dataSource} // Устанавливаем источник данных
+				popupWindowTabs={["general", "segments", "custom"]} // Устанавливаем вкладки всплывающего окна
 				popupWindowCustomizationFunction={(target, type, item) => {
 					if (type === "task") {
+						// Проверяем тип элемента
 						let segmentsContainer = target.querySelector(
 							".segments-container"
 						);
 
 						if (!segmentsContainer) {
-							segmentsContainer = document.createElement("div");
-							segmentsContainer.className = "segments-container";
-							target.appendChild(segmentsContainer);
+							segmentsContainer = document.createElement("div"); // Создаем контейнер для сегментов
+							segmentsContainer.className = "segments-container"; // Устанавливаем класс для контейнера
+							target.appendChild(segmentsContainer); // Добавляем контейнер в целевой элемент
 						}
 
-						segmentsContainer.innerHTML = "";
+						segmentsContainer.innerHTML = ""; // Очищаем контейнер сегментов
 
 						if (item.segments && item.segments.length > 0) {
+							// Проверяем, есть ли сегменты
 							item.segments.forEach((segment) => {
 								let segmentContainer =
-									document.createElement("div");
+									document.createElement("div"); // Создаем контейнер для сегмента
 
-								segmentContainer.innerHTML = `<h2>${segment.label}</h2>`;
+								segmentContainer.innerHTML = `<h2>${segment.label}</h2>`; // Устанавливаем содержимое сегмента
 
 								for (let key in segment) {
 									if (key !== "label") {
-										let p = document.createElement("p");
-										p.textContent = `${key}: ${segment[key]}`;
+										let p = document.createElement("p"); // Создаем элемент для отображения свойства сегмента
+										p.textContent = `${key}: ${segment[key]}`; // Устанавливаем текстовое содержимое элемента
 
-										segmentContainer.appendChild(p);
+										segmentContainer.appendChild(p); // Добавляем элемент в контейнер сегмента
 									}
 								}
 
-								segmentsContainer.appendChild(segmentContainer);
+								segmentsContainer.appendChild(segmentContainer); // Добавляем контейнер сегмента в контейнер сегментов
 							});
 						}
 					}
 				}}
-				style={{ marginTop: "80px", width: "96%" }}
+				style={{ marginTop: "80px", width: "96%" }} // Устанавливаем стили для компонента GanttChart
 			></GanttChart>
 		</div>
 	);

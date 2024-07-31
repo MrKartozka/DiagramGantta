@@ -8,22 +8,24 @@ import NavigationBar from "../NavigationBar/NavigationBar";
 import SideNav from "../SideNav/SideNav";
 
 function Diagram() {
+	// Определяем состояние для управления раскрывающимся меню, выбранной диаграммой, поисковым запросом и видом Gantt диаграммы
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 	const [selectedChart, setSelectedChart] = useState("gantta");
 	const [searchTerm, setSearchTerm] = useState("");
 	const [ganttView, setGanttView] = useState("year");
 
+	// Обработчик клика по аватарке для открытия/закрытия раскрывающегося меню
 	const handleAvatarClick = () => {
 		setIsDropdownOpen(!isDropdownOpen);
 	};
 
 	// Эффект для имитации загрузки данных
 	useEffect(() => {
-		// Имитация загрузки данных, если они есть
 		const data = []; // Пустой массив для демонстрации работы с пустыми данными
 		setFilteredData(data);
 	}, []);
 
+	// Функции для увеличения и уменьшения масштаба временной шкалы
 	const increaseTime = () => {
 		setGanttView((prevView) => {
 			switch (prevView) {
@@ -58,6 +60,7 @@ function Diagram() {
 		});
 	};
 
+	// Пример данных для Gantt диаграммы
 	const ganttaData = [
 		{
 			label: "00-260(44)",
@@ -245,8 +248,10 @@ function Diagram() {
 		},
 	];
 
+	// Состояние для фильтрованных данных
 	const [filteredData, setFilteredData] = useState(ganttaData);
 
+	// Эффект для фильтрации данных при изменении поискового запроса
 	useEffect(() => {
 		const newFilteredData = ganttaData
 			.map((order) => ({
@@ -285,12 +290,15 @@ function Diagram() {
 		setFilteredData(newFilteredData);
 	}, [searchTerm]);
 
+	// Обработчик для выбора типа диаграммы
 	const handleButtonClick = (chart) => {
 		setSelectedChart(chart);
 	};
 
+	// Размер дерева задач
 	const treeSize = 400;
 
+	// Возвращаем JSX для отображения компонента
 	return (
 		<div className="diagramm-home-screen">
 			<NavigationBar />

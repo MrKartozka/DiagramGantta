@@ -1,12 +1,15 @@
 import { useState, useEffect, React, Fragment } from "react";
 import "./TableDiagram.css";
+
 const TableDiagram = ({ data }) => {
+	// Состояния для управления раскрытием строк, сортировкой данных, поисковым запросом и текущим сортируемым столбцом
 	const [open, setOpen] = useState({});
 	const [sortedData, setSortedData] = useState([...data]);
 	const [sortKey, setSortKey] = useState(null);
 	const [sortAscending, setSortAscending] = useState(true);
 	const [searchTerm, setSearchTerm] = useState("");
 
+	// Функция для переключения раскрытия строк
 	const toggleOpen = (i) => {
 		setOpen((open) => ({
 			...open,
@@ -14,6 +17,7 @@ const TableDiagram = ({ data }) => {
 		}));
 	};
 
+	// Компонент стрелок сортировки
 	const SortArrows = ({ sortKey, currentKey, sortAscending }) => (
 		<div className="arrow-container">
 			<div
@@ -29,6 +33,7 @@ const TableDiagram = ({ data }) => {
 		</div>
 	);
 
+	// Функция для задания ключа сортировки и направления сортировки
 	const sortData = (key) => {
 		setSortKey(key);
 		setSortAscending((sortAscending) =>
@@ -36,6 +41,7 @@ const TableDiagram = ({ data }) => {
 		);
 	};
 
+	// Эффект для сортировки данных при изменении ключа сортировки или направления сортировки
 	useEffect(() => {
 		const sorted = [...sortedData].sort((a, b) => {
 			if (a[sortKey] < b[sortKey]) {
@@ -49,10 +55,12 @@ const TableDiagram = ({ data }) => {
 		setSortedData(sorted);
 	}, [sortKey, sortAscending, data]);
 
+	// Эффект для обновления отсортированных данных при изменении исходных данных
 	useEffect(() => {
 		setSortedData([...data]);
 	}, [data]);
 
+	// Возвращаем JSX для отображения таблицы
 	return (
 		<div>
 			<table className="main-table">
