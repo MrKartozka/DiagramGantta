@@ -258,7 +258,6 @@ const TableDiagram = ({ data }) => {
 																	>
 																		-
 																	</button>{" "}
-																	{/* invisible button to align the text */}
 																</td>
 																<td className="table-cell">
 																	{

@@ -44,10 +44,9 @@ function Resources() {
 				dateEnd: dateEnd.toISOString(),
 			};
 		} else {
-			// return some default value when there are no segments
 			return {
-				dateStart: new Date().toISOString(), // set a default start date
-				dateEnd: new Date().toISOString(), // set a default end date
+				dateStart: new Date().toISOString(),
+				dateEnd: new Date().toISOString(),
 			};
 		}
 	}
@@ -129,11 +128,10 @@ function Resources() {
 				...task,
 				dateStart: currentDateTime,
 				dateEnd: currentDateTime,
-				label: "", // Do not provide a label for tasks without segments
+				label: "",
 			};
 		}
 	});
-	// Set an initial state for the dataSource
 	const [dataSource, setDataSource] = useState([]);
 
 	useEffect(() => {
@@ -219,46 +217,34 @@ function Resources() {
 				popupWindowTabs={["general", "segments", "custom"]}
 				popupWindowCustomizationFunction={(target, type, item) => {
 					if (type === "task") {
-						// Check if the segmentsContainer already exists
 						let segmentsContainer = target.querySelector(
 							".segments-container"
 						);
 
-						// If it doesn't exist, create it
 						if (!segmentsContainer) {
 							segmentsContainer = document.createElement("div");
 							segmentsContainer.className = "segments-container";
 							target.appendChild(segmentsContainer);
 						}
 
-						// Clear the segmentsContainer's content
 						segmentsContainer.innerHTML = "";
 
-						// Check if the task has segments before trying to display them
 						if (item.segments && item.segments.length > 0) {
-							// Loop through all the segments of the task
 							item.segments.forEach((segment) => {
-								// Create a container for the segment
 								let segmentContainer =
 									document.createElement("div");
 
-								// Add the segment label to the container
 								segmentContainer.innerHTML = `<h2>${segment.label}</h2>`;
 
-								// Loop through all the properties of the segment
 								for (let key in segment) {
-									// Skip the 'label' property since we've already added it
 									if (key !== "label") {
-										// Create a paragraph element for the property
 										let p = document.createElement("p");
 										p.textContent = `${key}: ${segment[key]}`;
 
-										// Add the paragraph element to the segment container
 										segmentContainer.appendChild(p);
 									}
 								}
 
-								// Add the segment container to the segments container
 								segmentsContainer.appendChild(segmentContainer);
 							});
 						}

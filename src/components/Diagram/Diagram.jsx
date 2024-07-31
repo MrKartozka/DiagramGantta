@@ -11,7 +11,7 @@ function Diagram() {
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 	const [selectedChart, setSelectedChart] = useState("gantta");
 	const [searchTerm, setSearchTerm] = useState("");
-	const [ganttView, setGanttView] = useState("year"); // new state variable for the Gantt chart view
+	const [ganttView, setGanttView] = useState("year");
 
 	const handleAvatarClick = () => {
 		setIsDropdownOpen(!isDropdownOpen);
@@ -24,7 +24,6 @@ function Diagram() {
 		setFilteredData(data);
 	}, []);
 
-	// handle increase time
 	const increaseTime = () => {
 		setGanttView((prevView) => {
 			switch (prevView) {
@@ -42,7 +41,6 @@ function Diagram() {
 		});
 	};
 
-	// handle decrease time
 	const decreaseTime = () => {
 		setGanttView((prevView) => {
 			switch (prevView) {
@@ -297,7 +295,7 @@ function Diagram() {
 		<div className="diagramm-home-screen">
 			<NavigationBar />
 			<SideNav />
-			{/* <div className="header-items">
+			<div className="header-items">
 				<div className="links">
 					<div className="links-texts">
 						<div
@@ -316,8 +314,8 @@ function Diagram() {
 					</div>
 				</div>
 				<div className="links-buttons">
-					<button onClick={increaseTime}>Increase Time</button>
-					<button onClick={decreaseTime}>Decrease Time</button>
+					<button onClick={increaseTime}>Уменьшить таймлайн</button>
+					<button onClick={decreaseTime}>Увеличить таймлайн</button>
 				</div>
 				<input
 					type="text"
@@ -326,7 +324,7 @@ function Diagram() {
 					onChange={(e) => setSearchTerm(e.target.value)}
 					className="search-input"
 				/>
-			</div> */}
+			</div>
 
 			{selectedChart === "gantta" && (
 				<GanttChart
